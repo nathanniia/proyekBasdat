@@ -5,7 +5,7 @@ $find= mysqli_select_db($mysqli, $database);
 $query="SELECT * FROM kamar";
 $execute = mysqli_query($mysqli, $query);
 ?>
-
+<!-- ryhjjkll -->
 <!doctype html>
 <html lang="en">
   <head>
