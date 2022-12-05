@@ -62,9 +62,9 @@ if(isset($_POST['tombol']))
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-5">
-            <div class="boxlogin">
+            <div class="boxlogin d-grid gap-2 d-md-flex justify-content-md-end">
                     <form class="form-inline" role="form">
-                    <a class="btn btn-primary fs-3" href="index.php" role="button">Log Out</a>
+                    <a class="btn btn-primary me-md-4 fs-3 " href="index.php" role="button">Log Out</a>
                     </form>
                 </div>
                 
@@ -78,9 +78,15 @@ if(isset($_POST['tombol']))
                 <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
                     <li>
+                        <a href="lihatData_tamu.php" class="nav-link link-dark fs-3" >
+                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                            Data Tamu
+                        </a>
+                    </li>
+                    <li>
                         <a href="lihat_admin.php" class="nav-link link-dark fs-3" >
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-                            Lihat Data
+                            Data Reservasi
                         </a>
                     </li>
                     <li>

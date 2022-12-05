@@ -46,9 +46,15 @@ $execute = mysqli_query($mysqli, $query);
                 <hr>
                     <ul class="nav nav-pills flex-column mb-auto ">
                     <li>
+                        <a href="lihatData_tamu.php" class="nav-link link-dark fs-3" >
+                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                            Data Tamu
+                        </a>
+                    </li>
+                    <li>
                         <a href="lihat_admin.php" class="nav-link link-dark fs-3" >
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-                            Lihat Data
+                            Data Reservasi
                         </a>
                     </li>
                     <li>

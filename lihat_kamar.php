@@ -1,5 +1,5 @@
 <?php
-
+require_once("auth.php");
 require "koneksi.php";
 $find= mysqli_select_db($mysqli, $database);
 $query="SELECT * FROM kamar";
@@ -61,7 +61,7 @@ $execute = mysqli_query($mysqli, $query);
 				 <td class="fs-2"><?= $result['harga']?></td>
          <td align=center>
             <a href="detail_kamar.php?IdKamar=<?= $result['id_kamar']?>"><button type="button" class="btn btn-primary fs-4">Lihat Detail</button></a>
-            <a href="reservasi.php?Nama=<?= $result[0]?>"><button type="button" class="btn btn-primary fs-4">Reservasi</button></a>
+            <a href="reservasi.php?IdKamar=<?= $result['id_kamar']?>"><button type="button" class="btn btn-primary fs-4">Reservasi</button></a>
 				 </td>
 				</tr>
 				<?php }?>

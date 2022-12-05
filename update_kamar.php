@@ -52,9 +52,9 @@ if(isset($_POST['update'])){
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-5">
-            <div class="boxlogin">
+            <div class="boxlogin d-grid gap-2 d-md-flex justify-content-md-end">
                     <form class="form-inline" role="form">
-                    <a class="btn btn-primary fs-3" href="index.php" role="button">Log Out</a>
+                    <a class="btn btn-primary me-md-4 fs-3 " href="index.php" role="button">Log Out</a>
                     </form>
                 </div>
                 
@@ -70,7 +70,13 @@ if(isset($_POST['update'])){
                     <li>
                         <a href="#" class="nav-link link-dark fs-3" >
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-                            Lihat Data
+                            Data Tamu
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark fs-3" >
+                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                            Data Reservasi
                         </a>
                     </li>
                     <li>
@@ -80,19 +86,13 @@ if(isset($_POST['update'])){
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link link-dark fs-3">
-                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-                            Update Kamar
-                        </a>
-                    </li>
-                    <li>
                         <a href="hapus.php" class="nav-link link-dark fs-3">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-                            Delete Kamar
+                            Delete & Edit
                         </a>
                     </li>
                     </ul>
-                <hr>
+               
             </div>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">

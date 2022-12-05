@@ -1,4 +1,5 @@
 <?php
+require_once("auth.php");
 include('koneksi.php');
 $id_kamar=$_GET['IdKamar'];
 $query = mysqli_query($mysqli,"SELECT * FROM kamar WHERE id_kamar='$id_kamar'");

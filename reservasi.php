@@ -1,3 +1,35 @@
+<?php
+require_once("auth.php");
+include('koneksi.php');
+$id_kamar=$_GET['IdKamar'];
+$id_tamu=$_SESSION["tamu"]["id_tamu"];
+$query = mysqli_query($mysqli,"SELECT * FROM kamar WHERE id_kamar='$id_kamar'"); 
+$query2 = mysqli_query($mysqli,"SELECT * FROM tamu WHERE id_tamu='$id_tamu'");
+$result = mysqli_fetch_assoc($query);
+$result2 = mysqli_fetch_assoc($query2);
+
+if(isset($_POST['tombol']))
+{
+            $nama_lengkap = $result2["nama_lengkap"];
+            $no_telepon = $result2["no_telepon"];
+            $alamat = $result2["alamat"];
+            $tipe_kamar = $result["tipe_kamar"];
+            $check_in = @$_POST["check_in"];
+            $check_out = @$_POST["check_out"];
+            $harga = $result["harga"];
+
+            $query3="INSERT INTO reservasi (id_tamu, id_kamar, nama_lengkap, no_telepon, alamat, tipe_kamar, check_in, check_out, harga) VALUES('$id_tamu','$id_kamar','$nama_lengkap','$no_telepon','$alamat', '$tipe_kamar', '$check_in', '$check_out', '$harga')";
+            $simpan= mysqli_query($mysqli, $query3);
+
+            if($simpan){
+             header("Location:hasil_reservasi.php");
+            }else{
+              echo "Data gagal disimpan";}
+        }
+       
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,45 +64,46 @@
             </div>
         </div>
     </div>
-    <div class="hero">
-        <div class="row">
+    <div >
+        <div >
             <div class="col-md-6">
-                <div class="formhero">
+                <div >
                     <div class="panel panel-default">
-                        <div class="panel-body">
+                    <div class="panel-heading">
                             <h1>Reservasi</h1>
-                            <form role="form">
+                            <div class="panel-body">
+                            <form role="form" method="post">
                                 <div class="form-group">
                                     <label for="nama_lengkap"><h4>Nama Lengkap</h4></label>
-                                    <input type="text" class="form-control" id="nama_lengkap" placeholder="Enter Nama">
+                                    <input type="text" name="nama_lengkap" value="<?= $result2['nama_lengkap']?>" class="form-control" id="nama_lengkap">
                                 </div>
                                 <div class="form-group">
                                     <label for="no_telepon"><h4>No Telepon</h4></label>
-                                    <input type="text" class="form-control" id="no_telepon" placeholder="Enter Nomor">
+                                    <input type="text" name="no_telepon" value="<?= $result2['no_telepon']?>" class="form-control" id="no_telepon">
                                 </div>
                                 <div class="form-group">
                                     <label for="alamat"><h4>Alamat</h4></label>
-                                    <input type="text" class="form-control" id="alamat" placeholder="Enter Alamat">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email"><h4>Email</h4></label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter Email">
+                                    <input type="text" name="alamat" value="<?= $result2['alamat']?>" class="form-control" id="alamat">
                                 </div>
                                 <div class="form-group">
                                     <label for="tipe_kamar"><h4>Tipe Kamar</h4></label>
-                                    <input type="text" class="form-control" id="tipe_kamar" placeholder="Tipe Kamar">
+                                    <input type="text" name="tipe_kamar" value="<?= $result['tipe_kamar']?>" class="form-control" id="tipe_kamar">
+                                </div>
+                                <div class="form-group">
+                                    <label for="harga"><h4>Harga</h4></label>
+                                    <input type="text" name="harga" value="<?= $result['harga']?>" class="form-control" id="tipe_kamar">
                                 </div>
                                 <div class="form-group">
                                     <label for="checkin-date"><h4>Check-in Date</h4></label>
-                                    <input type="date" class="form-control" id="checkin-date" placeholder="Tanggal">
+                                    <input type="date" name="check_in" class="form-control" id="checkin-date" >
                                     
                                 </div>
                                 <div class="form-group">
                                     <label for="checkout-date"><h4>Check-out Date</h4></label>
-                                    <input type="date" class="form-control" id="checkout-date" placeholder="Tanggal">
+                                    <input type="date" name="check_out" class="form-control" id="checkout-date">
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                <button type="submit" name="tombol" class="btn btn-primary fs-4">Reservasi</button>
                                 </div>
                             </form>
                         </div>

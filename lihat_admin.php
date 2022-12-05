@@ -2,7 +2,7 @@
 
 require "koneksi.php";
 $find= mysqli_select_db($mysqli, $database);
-$query="SELECT * FROM kamar";
+$query="SELECT * FROM reservasi";
 $execute = mysqli_query($mysqli, $query);
 ?>
 
@@ -30,9 +30,9 @@ $execute = mysqli_query($mysqli, $query);
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-5">
-            <div class="boxlogin">
+            <div class="boxlogin d-grid gap-2 d-md-flex justify-content-md-end">
                     <form class="form-inline" role="form">
-                    <a class="btn btn-primary fs-3" href="index.php" role="button">Log Out</a>
+                    <a class="btn btn-primary me-md-4 fs-3 " href="index.php" role="button">Log Out</a>
                     </form>
                 </div>
                 
@@ -42,13 +42,19 @@ $execute = mysqli_query($mysqli, $query);
     <div class="container-fluid">
         <div class="row">
             <div class="b-example-divider b-example-vr"></div>
-                <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 250px;">
+                <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 200px;">
                 <hr>
-                    <ul class="nav nav-pills flex-column mb-auto">
+                    <ul class="nav nav-pills flex-column mb-auto ">
+                    <li>
+                        <a href="lihatData_tamu.php" class="nav-link link-dark fs-3" >
+                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                            Data Tamu
+                        </a>
+                    </li>
                     <li>
                         <a href="lihat_admin.php" class="nav-link link-dark fs-3" >
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-                            Lihat Data
+                            Data Reservasi
                         </a>
                     </li>
                     <li>
@@ -58,17 +64,48 @@ $execute = mysqli_query($mysqli, $query);
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link link-dark fs-3">
+                        <a href="hapus.php" class="nav-link link-dark fs-3">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
                             Delete & Edit
                         </a>
                     </li>
                     </ul>
-                
+                <hr />
+            </div>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h1">Delete Kamar </h1>
             </div>
 
-      
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-</body>
-</html>
+      <table class="table table-bordered fs-3">
+				<thead class="table-primary">
+                <td align=center>Id Reservasi</td>
+				 <td align=center>Id Tamu</td>
+                 <td align=center>Id Kamar</td>
+				 <td align=center>Nama Lengkap</td>
+				 <td align=center>No Handphone</td>
+				 <td align=center>Alamat</td>
+                 <td align=center>Tipe Kamar</td>
+                 <td align=center>Check In</td>
+                 <td align=center>Check Out</td>
+                 <td align=center>Harga</td>
+				</thead>
+				<?php while($result = mysqli_fetch_assoc($execute)){ ?>
+				<tr>
+                <td><?= $result['id_reservasi']?></td>
+				 <td><?= $result['id_tamu']?></td>
+                 <td><?= $result['id_kamar']?></td>
+				 <td><?= $result['nama_lengkap']?></td>
+				 <td><?= $result['no_telepon']?></td>
+				 <td><?= $result['alamat']?></td>
+				 <td><?= $result['tipe_kamar']?></td>
+                 <td><?= $result['check_in']?></td>
+                 <td><?= $result['check_out']?></td>
+                 <td><?= $result['harga']?></td>
+         <!-- <td align=center>
+            <a href="detail_user.php?Nama=<?= $result[0]?>"><button type="button" class="btn btn-primary">Lihat Detail</button></a>
+            <a href="deleteUser.php?IdUser=<?= $result['id_user']?>"><button type="button" class="btn btn-primary">Hapus</button></a>
+				 </td> -->
+				</tr>
+				<?php }?>
+			</table>
