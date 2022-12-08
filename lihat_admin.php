@@ -4,6 +4,7 @@ require "koneksi.php";
 $find= mysqli_select_db($mysqli, $database);
 $query="SELECT * FROM reservasi";
 $execute = mysqli_query($mysqli, $query);
+
 ?>
 
 <!doctype html>
@@ -11,7 +12,7 @@ $execute = mysqli_query($mysqli, $query);
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>login form</title>
+    <title>Re's Hotel</title>
     <!-- di bawah ini source google font -->
     <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Roboto:wght@100&display=swap');</style>
     <!-- di bawah ini source bootstrap -->
@@ -77,18 +78,19 @@ $execute = mysqli_query($mysqli, $query);
               <h1 class="h1">Delete Kamar </h1>
             </div>
 
-      <table class="table table-bordered fs-3">
+      <table class="table table-bordered fs-4">
 				<thead class="table-primary">
-                <td align=center>Id Reservasi</td>
-				 <td align=center>Id Tamu</td>
-                 <td align=center>Id Kamar</td>
-				 <td align=center>Nama Lengkap</td>
-				 <td align=center>No Handphone</td>
-				 <td align=center>Alamat</td>
-                 <td align=center>Tipe Kamar</td>
-                 <td align=center>Check In</td>
-                 <td align=center>Check Out</td>
-                 <td align=center>Harga</td>
+                <th>Id Reservasi</th>
+				 <th>Id Tamu</th>
+                 <th>Id Kamar</th>
+				 <th>Nama Lengkap</th>
+				 <th>No Handphone</th>
+				 <th>Alamat</th>
+                 <th>Tipe Kamar</th>
+                 <th>Check In</th>
+                 <th>Check Out</th>
+                 <th>Harga</th>
+                 <th>Hapus</th>
 				</thead>
 				<?php while($result = mysqli_fetch_assoc($execute)){ ?>
 				<tr>
@@ -102,6 +104,11 @@ $execute = mysqli_query($mysqli, $query);
                  <td><?= $result['check_in']?></td>
                  <td><?= $result['check_out']?></td>
                  <td><?= $result['harga']?></td>
+                 <td>
+                    <a href="?HapusButton=<?php echo $result['id_reservasi'] ?>" onclick="">
+                        <input type="submit" class="btn btn-primary fs-4" value="Hapus">
+                    </a>
+                 </td>
          <!-- <td align=center>
             <a href="detail_user.php?Nama=<?= $result[0]?>"><button type="button" class="btn btn-primary">Lihat Detail</button></a>
             <a href="deleteUser.php?IdUser=<?= $result['id_user']?>"><button type="button" class="btn btn-primary">Hapus</button></a>
@@ -109,3 +116,22 @@ $execute = mysqli_query($mysqli, $query);
 				</tr>
 				<?php }?>
 			</table>
+
+
+
+
+
+<?php 
+
+if (isset($_GET['HapusButton'])) {
+    # code...
+    $hapus = $_GET['HapusButton'];
+
+    mysqli_query($mysqli, "DELETE FROM reservasi WHERE id_reservasi = '$hapus'");
+
+    echo "<meta http-equiv=refresh content=0,URL='lihat_admin.php'>";
+
+}
+
+
+?>

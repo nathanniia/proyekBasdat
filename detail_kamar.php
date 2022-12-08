@@ -10,7 +10,7 @@ $query = mysqli_query($mysqli,"SELECT * FROM kamar WHERE id_kamar='$id_kamar'");
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>login form</title>
+    <title>Re's Hotel</title>
     <!-- di bawah ini source google font -->
     <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Roboto:wght@100&display=swap');</style>
     <!-- di bawah ini source bootstrap -->

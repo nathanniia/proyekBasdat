@@ -2,7 +2,7 @@
 require_once("auth.php");
 require "koneksi.php";
 $find= mysqli_select_db($mysqli, $database);
-$query="SELECT * FROM kamar";
+$query="SELECT * FROM kamar WHERE status = 0";
 $execute = mysqli_query($mysqli, $query);
 ?>
 

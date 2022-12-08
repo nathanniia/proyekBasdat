@@ -11,7 +11,7 @@ $execute = mysqli_query($mysqli, $query);
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>login form</title>
+    <title>Re's Hotel</title>
     <!-- di bawah ini source google font -->
     <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Roboto:wght@100&display=swap');</style>
     <!-- di bawah ini source bootstrap -->
@@ -82,19 +82,19 @@ $execute = mysqli_query($mysqli, $query);
               <h3 class="h5">Kamar</h3>
             </div>      
       <table class="table table-bordered" style="margin-bottom:40px;">
-				<thead class="table-primary fs-3">
-				 <td align=center>Id Kamar</td>
-				 <td align=center>Tipe Kamar</td>
-				 <td align=center>Fasilitas</td>
-				 <td align=center>Harga</td>
-         <td align=center>Pilihan Menu</td>
+				    <thead class="table-primary fs-4">
+				    <th>Id Kamar</th>
+				    <th>Tipe Kamar</th>
+				    <th>Fasilitas</th>
+				    <th>Harga</th>
+                    <th>Pilihan Menu</th>
 				</thead>
 				<?php while($result = mysqli_fetch_assoc($execute)){ ?>
 				<tr>
-				 <td><?= $result['id_kamar']?></td>
-         <td><?= $result['tipe_kamar']?></td>
-				 <td><?= $result['fasilitas']?></td>
-				 <td><?= $result['harga']?></td>
+				 <td class="fs-4"><?= $result['id_kamar']?></td>
+                 <td class="fs-4"><?= $result['tipe_kamar']?></td>
+				 <td class="fs-4"><?= $result['fasilitas']?></td>
+				 <td class="fs-4"><?= $result['harga']?></td>
          <td align=center>
             <a href="proses_hapus.php?IdKamar=<?= $result['id_kamar']?>"><button type="button" class="btn btn-primary fs-4">Hapus</button></a>
             <a href="update_kamar.php?IdKamar=<?= $result['id_kamar']?>"><button type="button" class="btn btn-primary fs-4">Edit</button></a>

@@ -12,8 +12,9 @@ if(isset($_POST['update'])){
 	        $tipe_kamar = @$_POST["tipe_kamar"];
             $fasilitas = @$_POST["fasilitas"];
             $harga = @$_POST["harga"];
+            $status = @$_POST["status"];
 	
-	$sql = "UPDATE kamar SET tipe_kamar='$tipe_kamar', fasilitas='$fasilitas', harga='$harga' WHERE id_kamar='$id_kamar'";
+	$sql = "UPDATE kamar SET tipe_kamar='$tipe_kamar', fasilitas='$fasilitas', harga='$harga', status = $status WHERE id_kamar='$id_kamar'";
 	$execute = mysqli_query($mysqli, $sql);
 	
 	if($execute){
@@ -33,7 +34,7 @@ if(isset($_POST['update'])){
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>login form</title>
+    <title>Re's Hotel</title>
     <!-- di bawah ini source google font -->
     <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Roboto:wght@100&display=swap');</style>
     <!-- di bawah ini source bootstrap -->
@@ -119,6 +120,16 @@ if(isset($_POST['update'])){
             <label for="inputHarga" class="col-sm-2 col-form-label fs-2">Harga</label>
             <div class="col-sm-10">
               <input type="text" name="harga" class="form-control fs-3" id="inputHarga" value="<?=$result_read['harga']?>">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputStatus" class="col-sm-2 col-form-label fs-2">Status</label>
+            <div class="col-sm-10">
+              <!-- <input type="text"  value="<?=$result_read['status']?>"> -->
+              <select name="status" class="form-control fs-3" id="inputStatus">
+                <option>0</option>
+                <option>1</option>
+              </select>
             </div>
         </div>
         <!-- <div class="row mb-3">

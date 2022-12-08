@@ -9,7 +9,7 @@ include 'koneksi.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>login form</title>
+    <title>Re's Hotel</title>
     <!-- di bawah ini source google font -->
     <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Roboto:wght@100&display=swap');</style>
     <!-- di bawah ini source bootstrap -->
@@ -46,16 +46,16 @@ include 'koneksi.php';
                         <div class="panel-body">
                             <h1>Sign In</h1>
                             <form action="login.php" method="post">
-                                <div class="form-group">
+                                <div class="form-group fs-3">
                                     <label for="username"><h4>Username</h4></label>
-                                    <input type="text" name="username" class="form-control" id="username" placeholder="Enter Username">
+                                    <input type="text" name="username" class="form-control fs-3" id="username" placeholder="Enter Username">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group fs-3">
                                     <label for="password"><h4>Password</h4></label>
-                                    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                                    <input type="password" name="password" class="form-control fs-3" id="password" placeholder="Password">
                                 </div>
-                                <div class="form-group">
-                                <button class="w-100 btn btn-lg btn-primary" type="submit" name="login">Masuk</button>
+                                <div class="form-group fs-3">
+                                <button class="w-100 btn btn-lg btn-primary fs-3" type="submit" name="login">Masuk</button>
                                 
                                 </div>
                             </form>

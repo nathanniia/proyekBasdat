@@ -4,7 +4,12 @@ include('koneksi.php');
 $id_tamu=$_SESSION["tamu"]["id_tamu"];
 $query = mysqli_query($mysqli,"SELECT * FROM reservasi WHERE id_tamu='$id_tamu'"); 
 $result = mysqli_fetch_assoc($query);
-
+// $lama3 = isset($result['check_out']) ? $result['check_out'] : '';
+// $lama4 = isset($result['check_in']) ? $result['check_in'] : '';
+$out = $result['check_out'];
+$in = $result['check_in'];
+$lama = mysqli_query($mysqli, "SELECT DATEDIFF('$out', '$in') lama from reservasi WHERE id_tamu='$id_tamu'");
+$lama2 = mysqli_fetch_assoc($lama);
 ?>
 
 
@@ -22,6 +27,7 @@ $result = mysqli_fetch_assoc($query);
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- di bawah ini source style.css -->
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
 <div class="header">
@@ -33,28 +39,26 @@ $result = mysqli_fetch_assoc($query);
             <div class="col-md-5">
                 <div class="boxlogin">
                     <form class="form-inline" role="form">
-                    <a class="btn btn-primary" href="home.php" role="button">Home</a>
-                    <a class="btn btn-primary" href="#" role="button">Kamar</a>
-                    <a class="btn btn-primary" href="reservasi.php" role="button">Reservasi</a>
-                    <a class="btn btn-primary" href="index.php" role="button">Log Out</a>
+                    <a class="btn btn-primary fs-3" href="home.php" role="button">Home</a>
+                    <a class="btn btn-primary fs-3" href="#" role="button">Kamar & Reservasi</a>
+                    <!-- <a class="btn btn-primary" href="reservasi.php" role="button">Reservasi</a> -->
+                    <a class="btn btn-primary fs-3" href="index.php" role="button">Log Out</a>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-<pre>
+<pre class="fs-3">
         Nama Lengkap    : <?php echo  $result['nama_lengkap']?> <br>
         No Telepon      : <?php echo  $result['no_telepon']?> <br>
         Alamat          : <?php echo  $result['alamat']?> <br>
         Tipe Kamar      : <?php echo  $result['tipe_kamar']?> <br>
         Checkin         : <?php echo  $result['check_in']?> <br>>
         Checkout        : <?php echo  $result['check_out']?> <br>
-        Lama Menginap   : <?php echo $lama; ?> Hari <br>
-        Tarif Sewa      : <?php echo "Rp.".number_format($harga); ?> <br>
+        Lama Menginap   : <?php echo  $lama2['lama']?> <br>
+        Tarif Sewa      : <?php echo  rupiah($result['harga']) ?> <br>
         ======================================== <br>
-        Subtotal     : <?php echo "Rp.".number_format($subtotal); ?> <br>
-        <pre>
-        <br>
+        Subtotal     : <?php echo  rupiah($result['harga'] * $lama2['lama']) ?>
 
 </body>
 </html>

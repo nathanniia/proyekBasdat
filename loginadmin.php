@@ -9,7 +9,7 @@ include 'koneksi.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>login form</title>
+    <title>Re's Hotel</title>
     <!-- di bawah ini source google font -->
     <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Roboto:wght@100&display=swap');</style>
     <!-- di bawah ini source bootstrap -->
@@ -18,6 +18,7 @@ include 'koneksi.php';
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- di bawah ini source style.css -->
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
     <div class="header">
@@ -27,11 +28,12 @@ include 'koneksi.php';
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-5">
-                <div class="boxlogin">
-                    <form class="form-inline" role="form">
-                    <a class="btn btn-primary" href="index.php" role="button">tamu</a>
+                <<div class="boxlogin ">
+                    <form class="form-inline d-grid gap-2 d-md-flex justify-content-md-end" role="form">
+                    <a class="btn btn-primary me-md-3 fs-3" href="loginadmin.php" role="button">Tamu</a>
                     </form>
                 </div>
+            </div>
             </div>
         </div>
     </div>
@@ -43,16 +45,16 @@ include 'koneksi.php';
                         <div class="panel-body">
                             <h1>Sign In</h1>
                             <form action="prosesadmin.php" method="post">
-                                <div class="form-group">
+                                <div class="form-group fs-3">
                                     <label for="username"><h4>Username</h4></label>
-                                    <input type="text" name="username" class="form-control" id="username" placeholder="Enter Username">
+                                    <input type="text" name="username" class="form-control fs-3" id="username" placeholder="Enter Username">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group fs-3">
                                     <label for="password"><h4>Password</h4></label>
-                                    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                                    <input type="password" name="password" class="form-control fs-3" id="password" placeholder="Password">
                                 </div>
                                 <div class="form-group">
-                                <button class="w-100 btn btn-lg btn-primary" type="submit" name="login">Masuk</button>
+                                <button class="w-100 btn btn-lg btn-primary fs-3" type="submit" name="login">Masuk</button>
                                 
                                 </div>
                             </form>

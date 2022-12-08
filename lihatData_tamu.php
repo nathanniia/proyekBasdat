@@ -11,7 +11,7 @@ $execute = mysqli_query($mysqli, $query);
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>login form</title>
+    <title>Re's Hotel/title>
     <!-- di bawah ini source google font -->
     <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Roboto:wght@100&display=swap');</style>
     <!-- di bawah ini source bootstrap -->
@@ -77,14 +77,15 @@ $execute = mysqli_query($mysqli, $query);
               <h1 class="h1">Delete Kamar </h1>
             </div>
 
-      <table class="table table-bordered fs-3">
+      <table class="table table-bordered fs-4">
 				<thead class="table-primary">
-				 <td align=center>Id Tamu</td>
-				 <td align=center>Nama Lengkap</td>
-				 <td align=center>No Handphone</td>
-				 <td align=center>Alamat</td>
-                 <td align=center>Email</td>
-                 <td align=center>Username</td>
+				 <th align=center>Id Tamu</th>
+				 <th align=center>Nama Lengkap</th>
+				 <th align=center>No Handphone</th>
+				 <th align=center>Alamat</th>
+                 <th align=center>Email</th>
+                 <th align=center>Username</th>
+                 <th align=center>Hapus</th>
 				</thead>
 				<?php while($result = mysqli_fetch_assoc($execute)){ ?>
 				<tr>
@@ -94,6 +95,11 @@ $execute = mysqli_query($mysqli, $query);
 				 <td><?= $result['alamat']?></td>
 				 <td><?= $result['email']?></td>
                  <td><?= $result['username']?></td>
+                 <td>
+                    <a href="?HapusButton=<?php echo $result['id_tamu'] ?>" onclick="">
+                        <input type="submit" class="btn btn-primary fs-3" value="Hapus">
+                    </a>
+                 </td>
          <!-- <td align=center>
             <a href="detail_user.php?Nama=<?= $result[0]?>"><button type="button" class="btn btn-primary">Lihat Detail</button></a>
             <a href="deleteUser.php?IdUser=<?= $result['id_user']?>"><button type="button" class="btn btn-primary">Hapus</button></a>
@@ -101,3 +107,19 @@ $execute = mysqli_query($mysqli, $query);
 				</tr>
 				<?php }?>
 			</table>
+
+
+<?php 
+
+if (isset($_GET['HapusButton'])) {
+    # code...
+    $hapus = $_GET['HapusButton'];
+
+    mysqli_query($mysqli, "DELETE FROM tamu WHERE id_tamu = '$hapus'");
+
+    echo "<meta http-equiv=refresh content=0,URL='lihatData_tamu.php'>";
+
+}
+
+
+?>
