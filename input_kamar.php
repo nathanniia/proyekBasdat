@@ -43,7 +43,7 @@ if(isset($_POST['tombol']))
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>login form</title>
+    <title>Re's Hotel</title>
     <!-- di bawah ini source google font -->
     <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Roboto:wght@100&display=swap');</style>
     <!-- di bawah ini source bootstrap -->
@@ -136,7 +136,8 @@ if(isset($_POST['tombol']))
               <input type="file" name="gambar" class="form-control f3" id="inputGroupFile02">
             </div>
         </div>
-        <button type="submit" class="btn btn-light" name="tombol"><h3>Input<h3></Input></button>
+        <!-- <button type="submit" class="btn btn-light" name="tombol"><h3>Input<h3></Input></button> -->
+        <button type="submit" class="btn btn-primary fs-4 col-md-3 center-block" name="tombol">Input</button>
     </form>
           </main>
         </div>

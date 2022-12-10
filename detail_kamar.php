@@ -42,10 +42,10 @@ $query = mysqli_query($mysqli,"SELECT * FROM kamar WHERE id_kamar='$id_kamar'");
     
     <?php while($result = mysqli_fetch_assoc($query)){ ?>
 
-        <div>
-          <div class="row g-0">
+        <div class="card">
+          <div class="row g-5">
             <div class="col-md-4">
-              <img src="gambar_kamar.php?IdKamar=<?php echo $result['id_kamar']; ?>" class="img-fluid rounded-start" alt="...">
+              <img src="gambar_kamar.php?IdKamar=<?php echo $result['id_kamar']; ?>" class="img-fluid rounded" alt="kamar">
             </div>
             <div class="col-md-8">
               <div class="card-body">

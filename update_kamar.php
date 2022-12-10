@@ -138,7 +138,8 @@ if(isset($_POST['update'])){
               <input type="file" name="gambar" class="form-control f3" id="inputGroupFile02">
             </div>
         </div> -->
-        <button type="submit" class="btn btn-light" name="update"><h3>Update<h3></Input></button>
+        <!-- <button type="submit" class="btn btn-light" name="update"><h3>Update<h3></Input></button> -->
+        <button type="submit" class="btn btn-primary fs-4 col-md-3 center-block" name="update">Edit</button>
     </form>
           </main>
         </div>

@@ -77,6 +77,12 @@ $execute = mysqli_query($mysqli, $query);
               <h1 class="h1">Data Tamu </h1>
             </div>
 
+            <form action="lihatData_tamu.php" class="fs-3" method="get">
+              <label>Cari :</label>
+              <input type="text" name="cari">
+              <input type="submit" value="Cari">
+            </form>
+
       <table class="table table-bordered fs-4">
 				<thead class="table-primary">
 				 <th align=center>Id Tamu</th>
@@ -87,7 +93,16 @@ $execute = mysqli_query($mysqli, $query);
                  <th align=center>Username</th>
                  <th align=center>Hapus</th>
 				</thead>
-				<?php while($result = mysqli_fetch_assoc($execute)){ ?>
+				<?php //while($result = mysqli_fetch_assoc($execute)){
+          if(isset($_GET['cari'])){
+            $cari = $_GET['cari'];
+            $data = mysqli_query($mysqli,"select * from tamu where nama_lengkap like '%".$cari."%'");    
+          }else{
+            $data = mysqli_query($mysqli,"select * from tamu");  
+          }
+          
+          while($result = mysqli_fetch_array($data)){
+          ?>
 				<tr>
 				 <td><?= $result['id_tamu']?></td>
 				 <td><?= $result['nama_lengkap']?></td>

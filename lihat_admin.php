@@ -104,7 +104,7 @@ $execute = mysqli_query($mysqli, $query);
                  <th>Check In</th>
                  <th>Check Out</th>
                  <th>Total Harga</th>
-                 <th>Hapus</th>
+                 <th>Menu</th>
 				</thead>
 				<?php while($result = mysqli_fetch_assoc($execute)){ ?>
 				<tr>

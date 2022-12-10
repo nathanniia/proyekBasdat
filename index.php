@@ -39,7 +39,7 @@ include 'koneksi.php';
         </div>
     </div>
     <div class="hero">
-        <div class="row">
+    <div class="container">>
             <div class="col-md-6">
                 <div class="formhero">
                     <div class="panel panel-default">

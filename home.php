@@ -36,8 +36,41 @@
         </div>
     </div>
     
-    <h1><center>Selamat Datang </center></h1>
-  <img src="img/img_4.jpg" alt="Nature" style="width:100%;">
+    <!-- <h1><center>Selamat Datang </center></h1>
+  <img src="img/img_4.jpg" alt="Nature" style="width:100%;"> -->
+
+  <div class="col-12 py-4 text-center">
+                <h1 class="display-1">Selamat Datang</h1>
+                <!-- <p class="lead">Panduan Belajar Bootstrap untuk Pemula</p> -->
+            </div>
+
+            <div class="col-md-8 py-3 fs-3">
+                <h1><center>RE'S HOTEL</center></h1>
+                <p><center>Selamat datang dihalaman utama untuk tamu <br>
+                Re's Hotel dapat digunakan untuk membuat reservasi kamar secara online</center></p>
+            </div>
+            <div class="col-md-4 py-5">
+                <img class="w-50" src="img/img_2.jpg" alt="gambar alam">
+            </div>
+
+
+  <main class="container border">
+        <!-- <div class="row"> -->
+            <hr>
+            <div class="col-md-4">
+                <h1>Enjoy</h1>
+                <img class="w-50" src="img/enjoy.png" alt="enjoy">
+            </div>
+            <div class="col-md-4">
+                <h1>Happy</h1>
+                <img class="w-50" src="img/happy.png" alt="happy">
+            </div>
+            <div class="col-md-4">
+                <h1>Healthy</h1>
+                <img class="w-50" src="img/health.png" alt="health">
+            </div>
+        </div>
+    </main>
 
 
  

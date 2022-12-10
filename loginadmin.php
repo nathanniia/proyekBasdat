@@ -30,7 +30,7 @@ include 'koneksi.php';
             <div class="col-md-5">
                 <<div class="boxlogin ">
                     <form class="form-inline d-grid gap-2 d-md-flex justify-content-md-end" role="form">
-                    <a class="btn btn-primary me-md-3 fs-3" href="loginadmin.php" role="button">Tamu</a>
+                    <a class="btn btn-primary me-md-3 fs-3" href="index.php" role="button">Tamu</a>
                     </form>
                 </div>
             </div>
@@ -38,7 +38,7 @@ include 'koneksi.php';
         </div>
     </div>
     <div class="hero">
-        <div class="row">
+    <div class="container">>
             <div class="col-md-6">
                 <div class="formhero">
                     <div class="panel panel-default">
@@ -53,7 +53,7 @@ include 'koneksi.php';
                                     <label for="password"><h4>Password</h4></label>
                                     <input type="password" name="password" class="form-control fs-3" id="password" placeholder="Password">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group fs-3">
                                 <button class="w-100 btn btn-lg btn-primary fs-3" type="submit" name="login">Masuk</button>
                                 
                                 </div>
@@ -64,5 +64,6 @@ include 'koneksi.php';
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>
