@@ -1,11 +1,17 @@
 <?php
-
-require "koneksi.php";
-$find= mysqli_select_db($mysqli, $database);
-$query="SELECT * FROM kamar";
-$execute = mysqli_query($mysqli, $query);
+require_once("auth.php");
+include('koneksi.php');
+$id_tamu=$_SESSION["tamu"]["id_tamu"];
+$query = mysqli_query($mysqli,"SELECT * FROM reservasi WHERE id_tamu='$id_tamu'"); 
+$result = mysqli_fetch_assoc($query);
+// $lama3 = isset($result['check_out']) ? $result['check_out'] : '';
+// $lama4 = isset($result['check_in']) ? $result['check_in'] : '';
+$out = $result['check_out'];
+$in = $result['check_in'];
+$lama = mysqli_query($mysqli, "SELECT DATEDIFF('$out', '$in') lama from reservasi WHERE id_tamu='$id_tamu'");
+$lama2 = mysqli_fetch_assoc($lama);
 ?>
-<!-- ryhjjkll -->
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -44,67 +50,89 @@ $execute = mysqli_query($mysqli, $query);
             <div class="b-example-divider b-example-vr"></div>
                 <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 200px;">
                 <hr>
-                    <ul class="nav nav-pills flex-column mb-auto">
+                    <ul class="nav nav-pills flex-column mb-auto ">
                     <li>
-                        <a href="lihat_admin.php" class="nav-link link-dark fs-3" >
-                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                        <a href="lihatData_tamu.php" class="nav-link link-dark fs-3" >
+                        <svg class="bi pe-none me-2" width="16" height="16"></svg>
                             Data Tamu
                         </a>
                     </li>
                     <li>
                         <a href="lihat_admin.php" class="nav-link link-dark fs-3" >
-                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                        <svg class="bi pe-none me-2" width="16" height="16"></svg>
                             Data Reservasi
                         </a>
                     </li>
                     <li>
+                    <li>
+                        <a href="pembayaran.php" class="nav-link link-dark fs-3" >
+                        <svg class="bi pe-none me-2" width="16" height="16"></svg>
+                            Pembayaran
+                        </a>
+                    </li>
+                    <li>
                         <a href="input_kamar.php" class="nav-link link-dark fs-3">
-                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                        <svg class="bi pe-none me-2" width="16" height="16"></svg>
                             Input Kamar
                         </a>
                     </li>
                     <li>
                         <a href="hapus.php" class="nav-link link-dark fs-3">
-                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                        <svg class="bi pe-none me-2" width="16" height="16"></svg>
                             Delete & Edit
                         </a>
                     </li>
                     </ul>
-                
+                <hr />
             </div>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-              <h1 class="h1">Delete & Edit Kamar </h1>
+              <h1 class="h1">Data Reservasi </h1>
             </div>
-    
-          <main class="col-md-9 ms-sm-auto col-lg-12 px-md-4">
-                 
-      <table class="table table-bordered" style="margin-bottom:40px;">
-				    <thead class="table-primary fs-4">
-				    <th>Id Kamar</th>
-				    <th>Tipe Kamar</th>
-				    <th>Fasilitas</th>
-				    <th>Harga</th>
-                    <th>Pilihan Menu</th>
+
+      <table class="table table-bordered fs-4">
+				<thead class="table-primary">
+                <th>Id Reservasi</th>
+				 <th>Id Tamu</th>
+                 <th>Id Admin</th>
+				 <th>Total Bayar</th>
+				 
 				</thead>
 				<?php while($result = mysqli_fetch_assoc($execute)){ ?>
 				<tr>
-				 <td class="fs-4"><?= $result['id_kamar']?></td>
-                 <td class="fs-4"><?= $result['tipe_kamar']?></td>
-				 <td class="fs-4"><?= $result['fasilitas']?></td>
-				 <td class="fs-4"><?= rupiah ($result['harga'])?></td>
-         <td align=center>
-            <a href="proses_hapus.php?IdKamar=<?= $result['id_kamar']?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" ><button type="button" class="btn btn-primary fs-4">Hapus</button></a>
-            <a href="update_kamar.php?IdKamar=<?= $result['id_kamar']?>"><button type="button" class="btn btn-primary fs-4">Edit</button></a>
-				 </td>
+                <td><?= $result['id_reservasi']?></td>
+				 <td><?= $result['id_tamu']?></td>
+                 <td><?= $result['id_kamar']?></td>
+				 <td><?= $result['id_admin']?></td>
+				 <td><?= rupiah($result['harga'] * $lama2['lama'])?></td>
+                 <td>
+                    <a href="?HapusButton=<?php echo $result['id_reservasi'] ?>" onclick="">
+                        <input type="submit" class="btn btn-primary fs-4" value="Hapus">
+                    </a>
+                 </td>
+         <!-- <td align=center>
+            <a href="detail_user.php?Nama=<?= $result[0]?>"><button type="button" class="btn btn-primary">Lihat Detail</button></a>
+            <a href="deleteUser.php?IdUser=<?= $result['id_user']?>"><button type="button" class="btn btn-primary">Hapus</button></a>
+				 </td> -->
 				</tr>
 				<?php }?>
-        </table>
-          </main>
-        </div>
-    </div>
+			</table>
 
-      
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-</body>
-</html>
+
+
+
+
+<?php 
+
+if (isset($_GET['HapusButton'])) {
+    # code...
+    $hapus = $_GET['HapusButton'];
+
+    mysqli_query($mysqli, "DELETE FROM reservasi WHERE id_reservasi = '$hapus'");
+
+    echo "<meta http-equiv=refresh content=0,URL='lihat_admin.php'>";
+
+}
+
+
+?>

@@ -4,6 +4,24 @@ require "koneksi.php";
 $find= mysqli_select_db($mysqli, $database);
 $query="SELECT * FROM kamar WHERE status = 0";
 $execute = mysqli_query($mysqli, $query);
+
+
+        // if (isset($_POST['cari'])) {
+        //     $kata_kunci=trim($_POST['kata_kunci']);
+        //     $sql="select * from kamar WHERE harga like '%".$kata_kunci."%' or tipe_kamar like '%".$kata_kunci."%'  order by id_kamar asc";
+
+        // }else {
+        //     $sql="select * from kamar order by id_kamar asc";
+        // }
+
+
+        // $hasil=mysqli_query($mysqli, $query);
+        // $no=0;
+        // while ($data = mysqli_fetch_array($hasil)) {
+        //     $no++;
+
+        // }
+
 ?>
 
 <!doctype html>
@@ -11,7 +29,7 @@ $execute = mysqli_query($mysqli, $query);
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>login form</title>
+    <title>Re's Hotel</title>
     <!-- di bawah ini source google font -->
     <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Roboto:wght@100&display=swap');</style>
     <!-- di bawah ini source bootstrap -->
@@ -30,21 +48,73 @@ $execute = mysqli_query($mysqli, $query);
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-5">
-                <div class="boxlogin">
+                <div class="boxlogin d-grid gap-2 d-md-flex justify-content-md-end">
                     <form class="form-inline" role="form">
                     <a class="btn btn-primary fs-3" href="home.php" role="button">Home</a>
                     <a class="btn btn-primary fs-3" href="lihat_kamar.php" role="button">Kamar & Reservasi</a>
-                    <a class="btn btn-primary fs-3" href="index.php" role="button">Log Out</a>
+                    <a class="btn btn-primary me-md-4 fs-3" href="index.php" role="button">Log Out</a>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+   
+<!--  
+<form action="lihat_kamar.php" method="get">
+	<label class="fs-2">Cari :</label>
+	<input type="text" class="fs-2" name="cari">
+	<input type="submit" class="fs-2" value="Cari">
+</form> -->
     
-          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+<!-- 
+// if(isset($_GET['cari'])){
+// 	$cari = $_GET['cari'];
+// 	echo "<b>Hasil pencarian : ".$cari."</b>";
+// }
+
+ 
+<table border="1">
+<thead class="table-primary fs-3">
+				 <td align=center>Id Kamar</td>
+				 <td align=center>Tipe Kamar</td>
+				 <td align=center>Fasilitas</td>
+				 <td align=center>Harga</td>
+         <td align=center>Pilihan Menu</td>
+				</thead>
+
+	// if(isset($_GET['cari'])){
+	// 	$cari = $_GET['cari'];
+	// 	$data = mysql_query("select * from kamar where tipe_kamar like '%".$cari."%'");				
+	// }else{
+	// 	$data = mysql_query("select * from kamar");		
+	// }
+	// $no = 1;
+	// while($d = mysql_fetch_array($data)){
+	// ?> -->
+  <!-- <div class="search">
+    <form action="cariKamar.php" method="post">
+      <td>
+        <span> Cari Kamar</span>
+  </td>
+  <td>
+    <input type="text" name="nameSearch" value="">
+  </td>
+  </form>
+  </div> -->
+
+          <main class="col-md-9 ms-sm-auto col-lg-12 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-              <h3 class="h5 fs-1">Kamar</h3>
-            </div>      
+              <h3 class="h5 fs-1"></h3>
+            </div>    
+            
+            <form action="lihat_kamar.php" class="fs-3" method="get">
+              <label>Cari :</label>
+              <input type="text" name="cari">
+              <input type="submit" value="Cari">
+            </form>
+
       <table class="table table-bordered" style="margin-bottom:40px;">
 				<thead class="table-primary fs-3">
 				 <td align=center>Id Kamar</td>
@@ -53,12 +123,21 @@ $execute = mysqli_query($mysqli, $query);
 				 <td align=center>Harga</td>
          <td align=center>Pilihan Menu</td>
 				</thead>
-				<?php while($result = mysqli_fetch_assoc($execute)){ ?>
+				<?php //while($result = mysqli_fetch_assoc($execute)){
+          if(isset($_GET['cari'])){
+            $cari = $_GET['cari'];
+            $data = mysqli_query($mysqli,"select * from kamar where tipe_kamar like '%".$cari."%'");    
+          }else{
+            $data = mysqli_query($mysqli,"select * from kamar");  
+          }
+          
+          while($result = mysqli_fetch_array($data)){
+          ?>
 				<tr>
 				 <td class="fs-2"><?= $result['id_kamar']?></td>
          <td class="fs-2"><?= $result['tipe_kamar']?></td>
 				 <td class="fs-2"><?= $result['fasilitas']?></td>
-				 <td class="fs-2"><?= $result['harga']?></td>
+				 <td class="fs-2"><?= rupiah ($result['harga'])?></td>
          <td align=center>
             <a href="detail_kamar.php?IdKamar=<?= $result['id_kamar']?>"><button type="button" class="btn btn-primary fs-4">Lihat Detail</button></a>
             <a href="reservasi.php?IdKamar=<?= $result['id_kamar']?>"><button type="button" class="btn btn-primary fs-4">Reservasi</button></a>

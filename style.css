@@ -12,7 +12,7 @@ body{
 }
 .header{
     width: 100%;
-    height: 80px;
+    height: 200px;
     background-color: #2f288b;
     margin: auto;
 }
@@ -104,7 +104,7 @@ h1{
 	padding: 0;
 	display: flex;
 	justify-content: center;
-	height: 100vh;
+	height: 200vh;
 	background-color: #2df3e1;
 	align-items: center;
 	font-family: sans-serif;

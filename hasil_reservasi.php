@@ -2,7 +2,7 @@
 require_once("auth.php");
 include('koneksi.php');
 $id_tamu=$_SESSION["tamu"]["id_tamu"];
-$query = mysqli_query($mysqli,"SELECT * FROM reservasi WHERE id_tamu='$id_tamu'"); 
+$query = mysqli_query($mysqli,"SELECT * FROM reservasi INNER JOIN kamar USING (id_kamar) WHERE id_tamu='$id_tamu'"); 
 $result = mysqli_fetch_assoc($query);
 // $lama3 = isset($result['check_out']) ? $result['check_out'] : '';
 // $lama4 = isset($result['check_in']) ? $result['check_in'] : '';
@@ -37,12 +37,11 @@ $lama2 = mysqli_fetch_assoc($lama);
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-5">
-                <div class="boxlogin">
+                <div class="boxlogin d-grid gap-2 d-md-flex justify-content-md-end">
                     <form class="form-inline" role="form">
                     <a class="btn btn-primary fs-3" href="home.php" role="button">Home</a>
-                    <a class="btn btn-primary fs-3" href="#" role="button">Kamar & Reservasi</a>
-                    <!-- <a class="btn btn-primary" href="reservasi.php" role="button">Reservasi</a> -->
-                    <a class="btn btn-primary fs-3" href="index.php" role="button">Log Out</a>
+                    <a class="btn btn-primary fs-3" href="lihat_kamar.php" role="button">Kamar & Reservasi</a>
+                    <a class="btn btn-primary me-md-4 fs-3" href="index.php" role="button">Log Out</a>
                     </form>
                 </div>
             </div>
@@ -59,6 +58,8 @@ $lama2 = mysqli_fetch_assoc($lama);
         Tarif Sewa      : <?php echo  rupiah($result['harga']) ?> <br>
         ======================================== <br>
         Subtotal     : <?php echo  rupiah($result['harga'] * $lama2['lama']) ?>
+
+        <a href="lihat_kamar.php?IdKamar=<?= $result['id_kamar']?>"><button type="button" class="btn btn-primary fs-3 " style="margin-left:40%">Kembali</button></a> 
 
 </body>
 </html>

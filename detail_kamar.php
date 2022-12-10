@@ -29,11 +29,11 @@ $query = mysqli_query($mysqli,"SELECT * FROM kamar WHERE id_kamar='$id_kamar'");
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-5">
-                <div class="boxlogin">
+                <div class="boxlogin d-grid gap-2 d-md-flex justify-content-md-end">
                     <form class="form-inline" role="form">
                     <a class="btn btn-primary fs-3" href="home.php" role="button">Home</a>
                     <a class="btn btn-primary fs-3" href="lihat_kamar.php" role="button">Kamar & Reservasi</a>
-                    <a class="btn btn-primary fs-3" href="index.php" role="button">Log Out</a>
+                    <a class="btn btn-primary me-md-4 fs-3" href="index.php" role="button">Log Out</a>
                     </form>
                 </div>
             </div>
@@ -54,7 +54,7 @@ $query = mysqli_query($mysqli,"SELECT * FROM kamar WHERE id_kamar='$id_kamar'");
               <p class="card-text fs-1" style="margin-left:8%"><small class="text-muted">Fasilitas</small></p>
               <p class="card-text fs-1" style="margin-left:8%"><?= $result['fasilitas']?></p>
               <p class="card-text fs-1" style="margin-left:8%"><small class="text-muted">Harga</small></p>
-              <p class="card-text fs-1" style="margin-left:8%"><?= $result['harga']?></p>
+              <p class="card-text fs-1" style="margin-left:8%"><?= rupiah ($result['harga'])?></p>
               <a href="lihat_kamar.php?IdKamar=<?= $result['id_kamar']?>"><button type="button" class="btn btn-primary fs-3 " style="margin-left:40%">Kembali</button></a> 
               </div>
             </div>

@@ -7,6 +7,20 @@ $execute = mysqli_query($mysqli, $query);
 
 ?>
 
+<!-- <?php
+// require_once("auth.php");
+// include('koneksi.php');
+// $id_tamu=$_SESSION["tamu"]["id_tamu"];
+// $query = mysqli_query($mysqli,"SELECT * FROM reservasi WHERE id_tamu='$id_tamu'"); 
+// $result = mysqli_fetch_assoc($query);
+// // $lama3 = isset($result['check_out']) ? $result['check_out'] : '';
+// // $lama4 = isset($result['check_in']) ? $result['check_in'] : '';
+// $out = $result['check_out'];
+// $in = $result['check_in'];
+// $lama = mysqli_query($mysqli, "SELECT DATEDIFF('$out', '$in') lama from reservasi WHERE id_tamu='$id_tamu'");
+// $lama2 = mysqli_fetch_assoc($lama);
+?> -->
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -75,7 +89,7 @@ $execute = mysqli_query($mysqli, $query);
             </div>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-              <h1 class="h1">Delete Kamar </h1>
+              <h1 class="h1">Data Reservasi </h1>
             </div>
 
       <table class="table table-bordered fs-4">
@@ -89,7 +103,7 @@ $execute = mysqli_query($mysqli, $query);
                  <th>Tipe Kamar</th>
                  <th>Check In</th>
                  <th>Check Out</th>
-                 <th>Harga</th>
+                 <th>Total Harga</th>
                  <th>Hapus</th>
 				</thead>
 				<?php while($result = mysqli_fetch_assoc($execute)){ ?>
@@ -103,10 +117,10 @@ $execute = mysqli_query($mysqli, $query);
 				 <td><?= $result['tipe_kamar']?></td>
                  <td><?= $result['check_in']?></td>
                  <td><?= $result['check_out']?></td>
-                 <td><?= $result['harga']?></td>
+                 <td><?= rupiah ($result['total_harga'])?></td>
                  <td>
                     <a href="?HapusButton=<?php echo $result['id_reservasi'] ?>" onclick="">
-                        <input type="submit" class="btn btn-primary fs-4" value="Hapus">
+                        <input type="submit" class="btn btn-primary fs-4" value="Sudah Reservasi">
                     </a>
                  </td>
          <!-- <td align=center>

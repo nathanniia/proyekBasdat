@@ -14,17 +14,29 @@ if(isset($_POST['tombol']))
             $no_telepon = $result2["no_telepon"];
             $alamat = $result2["alamat"];
             $tipe_kamar = $result["tipe_kamar"];
-            $check_in = @$_POST["check_in"];
-            $check_out = @$_POST["check_out"];
-            $harga = $result["harga"];
+            $check_in = $_POST["check_in"];
+            $check_out = $_POST["check_out"];
+            // $harga = $result["harga"];
+            $out = $_POST['check_out'];
+            $in = $_POST['check_in'];
+            // $lama = mysqli_query($mysqli, "SELECT DATEDIFF('$out', '$in') lama from reservasi WHERE id_tamu='$id_tamu'");
+            // $lama2 = mysqli_fetch_assoc($lama);
 
-            $query3="INSERT INTO reservasi (id_tamu, id_kamar, nama_lengkap, no_telepon, alamat, tipe_kamar, check_in, check_out, harga) VALUES('$id_tamu','$id_kamar','$nama_lengkap','$no_telepon','$alamat', '$tipe_kamar', '$check_in', '$check_out', '$harga')";
+            $tgl1 = new DateTime($in);
+            $tgl2 = new DateTime($out);
+            $jarak = $tgl2->diff($tgl1);
+
+            $lama = $jarak->d;
+            $total_harga = $result['harga'] * $lama;
+
+            $query3="INSERT INTO reservasi (id_tamu, id_kamar, nama_lengkap, no_telepon, alamat, tipe_kamar, check_in, check_out, total_harga) VALUES('$id_tamu','$id_kamar','$nama_lengkap','$no_telepon','$alamat', '$tipe_kamar', '$check_in', '$check_out', '$total_harga')";
             $simpan= mysqli_query($mysqli, $query3);
 
             mysqli_query($mysqli, "UPDATE kamar SET status = 1 WHERE id_kamar = '$id_kamar'");
 
             if($simpan){
-             header("Location:hasil_reservasi.php");
+            header("Location:hasil_reservasi.php");
+            // echo $lama2['lama'];
             }else{
               echo "Data gagal disimpan";}
         }
@@ -56,12 +68,11 @@ if(isset($_POST['tombol']))
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-5">
-                <div class="boxlogin">
+                <div class="boxlogin d-grid gap-2 d-md-flex justify-content-md-end">
                     <form class="form-inline" role="form">
                     <a class="btn btn-primary fs-3" href="home.php" role="button">Home</a>
-                    <a class="btn btn-primary fs-3" href="#" role="button">Kamar & Reservasi</a>
-                    <!-- <a class="btn btn-primary" href="reservasi.php" role="button">Reservasi</a> -->
-                    <a class="btn btn-primary fs-3" href="index.php" role="button">Log Out</a>
+                    <a class="btn btn-primary fs-3" href="lihat_kamar.php" role="button">Kamar & Reservasi</a>
+                    <a class="btn btn-primary me-md-4 fs-3" href="index.php" role="button">Log Out</a>
                     </form>
                 </div>
             </div>

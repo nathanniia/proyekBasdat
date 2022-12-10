@@ -25,11 +25,11 @@
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-5">
-                <div class="boxlogin">
+                <div class="boxlogin d-grid gap-2 d-md-flex justify-content-md-end">
                     <form class="form-inline" role="form">
                     <a class="btn btn-primary fs-3" href="home.php" role="button">Home</a>
                     <a class="btn btn-primary fs-3" href="lihat_kamar.php" role="button">Kamar & Reservasi</a>
-                    <a class="btn btn-primary fs-3" href="index.php" role="button">Log Out</a>
+                    <a class="btn btn-primary me-md-4 fs-3" href="index.php" role="button">Log Out</a>
                     </form>
                 </div>
             </div>

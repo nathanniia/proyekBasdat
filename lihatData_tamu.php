@@ -11,7 +11,7 @@ $execute = mysqli_query($mysqli, $query);
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Re's Hotel/title>
+    <title>Re's Hotel</title>
     <!-- di bawah ini source google font -->
     <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Roboto:wght@100&display=swap');</style>
     <!-- di bawah ini source bootstrap -->
@@ -74,7 +74,7 @@ $execute = mysqli_query($mysqli, $query);
             </div>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-              <h1 class="h1">Delete Kamar </h1>
+              <h1 class="h1">Data Tamu </h1>
             </div>
 
       <table class="table table-bordered fs-4">
