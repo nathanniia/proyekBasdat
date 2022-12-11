@@ -22,7 +22,8 @@ if(isset($_POST['tombol']))
             $fasilitas = @$_POST["fasilitas"];
             $harga = @$_POST["harga"];
 
-            $query="INSERT INTO kamar (tipe_kamar, fasilitas, harga, gambar) VALUES('$tipe_kamar','$fasilitas','$harga','$image')";
+            $query="INSERT INTO kamar (tipe_kamar, fasilitas, harga, gambar) 
+                    VALUES('$tipe_kamar','$fasilitas','$harga','$image')";
             $simpan= mysqli_query($mysqli, $query);
 
             if($simpan){

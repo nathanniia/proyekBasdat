@@ -11,16 +11,12 @@ $username =@$_POST['username'];
 $password =@$_POST['password'];
 
 
-$query="INSERT INTO tamu (nama_lengkap, no_telepon, alamat, email, username, password) VALUES('$nama_lengkap','$no_telepon','$alamat','$email','$username','$password')";
+$query="INSERT INTO tamu (nama_lengkap, no_telepon, alamat, email, username, password) 
+        VALUES('$nama_lengkap','$no_telepon','$alamat','$email','$username','$password')";
 $simpan= mysqli_query($mysqli, $query);
 if($simpan){
     header("Location: index.php");
-    // echo "Data tersimpan:<br>";
-    // echo "Nama                : ".$nama."<br>";
-    // echo "Alamat              : ".$alamat."<br>";
-    // echo "Email       		  : ".$email."<br>";
-    // echo "Nomor HP            : ".$nomorhp."<br>"; 
-    //echo "Password            : ".$password."<br>";
+    
 }else{
     echo "Data gagal disimpan";}
 ?>

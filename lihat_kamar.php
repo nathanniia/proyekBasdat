@@ -4,24 +4,6 @@ require "koneksi.php";
 $find= mysqli_select_db($mysqli, $database);
 $query="SELECT * FROM kamar WHERE status = 0";
 $execute = mysqli_query($mysqli, $query);
-
-
-        // if (isset($_POST['cari'])) {
-        //     $kata_kunci=trim($_POST['kata_kunci']);
-        //     $sql="select * from kamar WHERE harga like '%".$kata_kunci."%' or tipe_kamar like '%".$kata_kunci."%'  order by id_kamar asc";
-
-        // }else {
-        //     $sql="select * from kamar order by id_kamar asc";
-        // }
-
-
-        // $hasil=mysqli_query($mysqli, $query);
-        // $no=0;
-        // while ($data = mysqli_fetch_array($hasil)) {
-        //     $no++;
-
-        // }
-
 ?>
 
 <!doctype html>
@@ -59,51 +41,7 @@ $execute = mysqli_query($mysqli, $query);
         </div>
     </div>
 
-   
-<!--  
-<form action="lihat_kamar.php" method="get">
-	<label class="fs-2">Cari :</label>
-	<input type="text" class="fs-2" name="cari">
-	<input type="submit" class="fs-2" value="Cari">
-</form> -->
-    
-
-<!-- 
-// if(isset($_GET['cari'])){
-// 	$cari = $_GET['cari'];
-// 	echo "<b>Hasil pencarian : ".$cari."</b>";
-// }
-
- 
-<table border="1">
-<thead class="table-primary fs-3">
-				 <td align=center>Id Kamar</td>
-				 <td align=center>Tipe Kamar</td>
-				 <td align=center>Fasilitas</td>
-				 <td align=center>Harga</td>
-         <td align=center>Pilihan Menu</td>
-				</thead>
-
-	// if(isset($_GET['cari'])){
-	// 	$cari = $_GET['cari'];
-	// 	$data = mysql_query("select * from kamar where tipe_kamar like '%".$cari."%'");				
-	// }else{
-	// 	$data = mysql_query("select * from kamar");		
-	// }
-	// $no = 1;
-	// while($d = mysql_fetch_array($data)){
-	// ?> -->
-  <!-- <div class="search">
-    <form action="cariKamar.php" method="post">
-      <td>
-        <span> Cari Kamar</span>
-  </td>
-  <td>
-    <input type="text" name="nameSearch" value="">
-  </td>
-  </form>
-  </div> -->
-
+  
           <main class="col-md-9 ms-sm-auto col-lg-12 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
               <h3 class="h5 fs-1"></h3>
