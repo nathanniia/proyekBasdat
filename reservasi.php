@@ -16,12 +16,8 @@ if(isset($_POST['tombol']))
             $tipe_kamar = $result["tipe_kamar"];
             $check_in = $_POST["check_in"];
             $check_out = $_POST["check_out"];
-            // $harga = $result["harga"];
             $out = $_POST['check_out'];
             $in = $_POST['check_in'];
-            // $lama = mysqli_query($mysqli, "SELECT DATEDIFF('$out', '$in') lama from reservasi WHERE id_tamu='$id_tamu'");
-            // $lama2 = mysqli_fetch_assoc($lama);
-
             $tgl1 = new DateTime($in);
             $tgl2 = new DateTime($out);
             $jarak = $tgl2->diff($tgl1);

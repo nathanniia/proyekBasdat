@@ -132,13 +132,6 @@ if(isset($_POST['update'])){
               </select>
             </div>
         </div>
-        <!-- <div class="row mb-3">
-            <label for="inputGroupFile" class="col-sm-2 col-form-label fs-2">Gambar</label>
-            <div class="col-sm-10">
-              <input type="file" name="gambar" class="form-control f3" id="inputGroupFile02">
-            </div>
-        </div> -->
-        <!-- <button type="submit" class="btn btn-light" name="update"><h3>Update<h3></Input></button> -->
         <button type="submit" class="btn btn-primary fs-4 col-md-3 center-block" name="update">Edit</button>
     </form>
           </main>

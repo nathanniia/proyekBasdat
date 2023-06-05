@@ -64,9 +64,9 @@ $execute = mysqli_query($mysqli, $query);
 				<?php //while($result = mysqli_fetch_assoc($execute)){
           if(isset($_GET['cari'])){
             $cari = $_GET['cari'];
-            $data = mysqli_query($mysqli,"select * from kamar where tipe_kamar like '%".$cari."%'");    
+            $data = mysqli_query($mysqli,"select * from kamar where tipe_kamar like '%".$cari."%' and status=0");    
           }else{
-            $data = mysqli_query($mysqli,"select * from kamar");  
+            $data = mysqli_query($mysqli,"select * from kamar where status = 0");  
           }
           
           while($result = mysqli_fetch_array($data)){
